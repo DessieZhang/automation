@@ -1,0 +1,32 @@
+[
+  {
+    "type": "Rose",
+    "price": 0.50,
+    "color": "Red",
+    "amount": 25
+  },
+  {
+    "type": "Pansy",
+    "price": 2.50,
+    "color": "Red",
+    "amount": 15
+  },
+  {
+    "type": "Petunia",
+    "price": 3.1,
+    "color": "Pink",
+    "amount": 30
+  },
+  {
+    "type": "Violet",
+    "price": 6.6,
+    "color": "Pulse",
+    "amount": 40
+  },
+  {
+    "type": "Carnation",
+    "price": 1.8,
+    "color": "Yellow",
+    "amount": 50
+  }
+]
