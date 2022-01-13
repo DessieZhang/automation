@@ -1,7 +1,7 @@
 package com.epam.part3.task2;
 
 public class Pansy extends Flower {
-    public Pansy(){
+    public Pansy() {
         super();
     }
 
@@ -11,10 +11,10 @@ public class Pansy extends Flower {
     }
 
     @Override
-    public int checkInStock(int amount){
+    public int checkInStock(int amount) {
         int actualBought = 0;
         if (super.getAmount() == 0) {
-            System.out.println("Pansys are out of stock!");
+            System.out.println("Pansies are out of stock!");
         } else if (amount <= super.getAmount()) {
             actualBought = amount;
         } else if (amount > super.getAmount()) {

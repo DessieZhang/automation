@@ -18,7 +18,7 @@ public class BouquetCalculator implements Bouquet {
 
     //Check if the order bouquet is valid
     public boolean validateBouquetType(String type) {
-        if ((type.equals("tiny")) || (type.equals("medium")) || (type.equals("big")))
+        if ((type.equalsIgnoreCase("tiny")) || (type.equalsIgnoreCase("medium")) || (type.equalsIgnoreCase("big")))
             return true;
         else {
             return false;

@@ -1,7 +1,8 @@
 package com.epam.part3.task2;
 
 public class Petunia extends Flower {
-    public Petunia(){
+    public Petunia() {
+        super();
     }
 
     @Override
@@ -10,7 +11,7 @@ public class Petunia extends Flower {
     }
 
     @Override
-    public int checkInStock(int amount){
+    public int checkInStock(int amount) {
         int actualBought = 0;
         if (super.getAmount() == 0) {
             System.out.println("Petunias are out of stock!");

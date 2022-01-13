@@ -1,79 +1,70 @@
 package com.epam.part3.task2;
 
 import java.util.List;
+import com.epam.GlobalVar;
+import com.epam.part3.task2.Bouquet;
+import com.epam.part3.task2.Flower;
 
-public class BouquetCalculator {
+public class BouquetCalculator implements Bouquet {
 
-    public static final int maxTiny = 5, maxMedium = 10, maxBig = 20;
-    public static final double basePriceTiny = 10;
-    public static final double basePriceMedium = 15;
-    public static final double basePriceBig = 20;
-
-    public static int flowersSum(int[] flowers){
+    //Get the sum of order flowers
+    public static int flowersSum(int[] flowers) {
         int sum = 0;
-        for(int i : flowers){
+        for (int i : flowers) {
             sum += i;
         }
         return sum;
     }
 
-    public static boolean validateBouquet(String size, int[] flowers)
-    {
-        // check for valid number of flowers for tiny bouquet
-        if(size.equals("tiny"))
-        {
-            if(flowersSum(flowers) >0 & flowersSum(flowers) <= maxTiny)
-                return true;
-            else return false;
-        }
-        // check for valid number of flowers for medium bouquet
-        else if(size.equals("medium"))
-        {
-            if(flowersSum(flowers) >0 & flowersSum(flowers) <= maxMedium)
-                return true;
-            else return false;
-        }
-        // check for valid number of flowers for big bouquet
-        else if(size.equals("big"))
-        {
-            if(flowersSum(flowers) >0 & flowersSum(flowers) <= maxBig)
-                return true;
-            else return false;
-        }
-        else return false;
-    }
-
-    public static boolean validateBouquetSize(String size)
-    {
-        if((size.equals("tiny"))||(size.equals("medium"))||(size.equals("big")))
-          return true;
+    //Check if the order bouquet is valid
+    public boolean validateBouquetType(String type) {
+        if ((type.equalsIgnoreCase("tiny")) || (type.equalsIgnoreCase("medium")) || (type.equalsIgnoreCase("big")))
+            return true;
         else
-          return false;
+            return false;
     }
 
-    public static double calculateCost(String size, List<Flower> flowers, int[] orderAmount)
-    {
+    // Validate if the number of flowers chosen match the bouquet size requested
+    public boolean validateBouquet(String type, int[] flowers) {
+        if (type.equalsIgnoreCase("tiny")) {
+            if (flowersSum(flowers) > 0 & flowersSum(flowers) <= GlobalVar.MaxTiny)
+                return true;
+            else return false;
+        } else if (type.equalsIgnoreCase("medium")) {
+            if (flowersSum(flowers) > GlobalVar.MaxTiny & flowersSum(flowers) <= GlobalVar.MaxMedium)
+                return true;
+            else return false;
+        } else if (type.equalsIgnoreCase("big")) {
+            if (flowersSum(flowers) > GlobalVar.MaxMedium & flowersSum(flowers) <= GlobalVar.MaxBig)
+                return true;
+            else return false;
+        } else return false;
+    }
+
+    //Calculate the BouquetCost according to Bouquet type
+    public double calculateBouquetCost(String bouquetType, List<Flower> flowers, int[] orderAmount) {
         double cost = 0;
-        if(validateBouquet(size,orderAmount))
-        {
-            switch (size.toLowerCase().trim()) {
+        double flowerCost = 0;
+        if (validateBouquet(bouquetType, orderAmount)) {
+            for (int i = 0; i < flowers.size(); i++) {
+                flowerCost += orderAmount[i] * flowers.get(i).getPrice();
+            }
+            switch (bouquetType.toLowerCase().trim()) {
                 case "tiny":
-                    cost = basePriceTiny + orderAmount[0] * flowers.get(0).getPrice() + orderAmount[1] * flowers.get(1).getPrice() + orderAmount[2] * flowers.get(2).getPrice() +
-                            orderAmount[3] * flowers.get(3).getPrice() + orderAmount[4]* flowers.get(4).getPrice() ;
+                    cost = GlobalVar.BasePriceTiny + flowerCost;
                     break;
                 case "medium":
-                    cost = basePriceMedium + orderAmount[0] * flowers.get(0).getPrice() + orderAmount[1] * flowers.get(1).getPrice() + orderAmount[2] * flowers.get(2).getPrice() +
-                            orderAmount[3] * flowers.get(3).getPrice() + orderAmount[4]* flowers.get(4).getPrice() ;
+                    cost = GlobalVar.BasePriceMedium + flowerCost;
                     break;
                 case "big":
-                    cost = basePriceBig + orderAmount[0] * flowers.get(0).getPrice() + orderAmount[1] * flowers.get(1).getPrice() + orderAmount[2] * flowers.get(2).getPrice() +
-                            orderAmount[3] * flowers.get(3).getPrice() + orderAmount[4]* flowers.get(4).getPrice() ;
+                    cost = GlobalVar.BasePriceBig + flowerCost;
                     break;
                 default:
                     cost = 0;
             }
             return cost;
-        }
-        else return -1;
+        } else
+            System.out.println("The number of flowers you chosen does not match the bouquet size requested. Please re-enter the number of each flowers:");
+        return -1;
     }
 }

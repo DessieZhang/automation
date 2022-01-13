@@ -2,18 +2,19 @@ package com.epam.part4.task1;
 
 import com.epam.db.exception.DatabaseException;
 import com.epam.GlobalVar;
-import com.epam.part4.task1.Flower;
-import com.epam.part4.task1.Bouquet;
 import com.epam.part4.task1.DB.FlowerShopDBClient;
 import com.epam.part4.task1.Json.JsonHandler;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
+import java.util.logging.Logger;
 
 public class FlowerShop {
+    private static Logger logger = Logger.getLogger(FlowerShop.class.getName());
     Bouquet bouquet = new BouquetCalculator();
-    List<Flower> flowers = null;
+    private static List<Flower> flowers = null;
     String bouquetType = null;
     int[] flowersNum = new int[5];
     double cost = 0;
@@ -36,13 +37,13 @@ public class FlowerShop {
 
     public static List<Flower> getFlowersFromDB() throws DatabaseException {
         FlowerShopDBClient client = new FlowerShopDBClient();
-        List<Flower> flowers = client.getFlowers();
+        flowers = client.getFlowers();
         return flowers;
     }
 
     public static List<Flower> getFlowerFromJson() throws FileNotFoundException {
-        JsonHandler jsReader = new JsonHandler();
-        List<Flower> flowers = jsReader.getFlowersData();
+        JsonHandler jsonHandler = new JsonHandler();
+        flowers = jsonHandler.getFlowersData();
         return flowers;
     }
 
@@ -85,26 +86,26 @@ public class FlowerShop {
         client.updateFlowersTable(flowers);
     }
 
-    public void updateFlowersStockJson() throws FileNotFoundException {
-        JsonHandler jsReader = new JsonHandler();
-        jsReader.updateFlowersData();
+    public void updateFlowersStockJson() throws IOException {
+        JsonHandler jsonHandler = new JsonHandler();
+        jsonHandler.updateFlowersData(flowers);
     }
 
     public static void main(String[] args) throws Exception {
         //From DataBase using JDBC driver
-        System.out.println("====================From DataBase using JDBC driver=======================");
+        logger.warning("====================From DataBase using JDBC driver=======================");
         String size = null;
         FlowerShop flowerShopDB = new FlowerShop();
         size = flowerShopDB.chooseBouquetType();
-        flowerShopDB.validateOrderType("DB" , size);
+        flowerShopDB.validateOrderType("DB", size);
         flowerShopDB.calculateBouquetCost();
         flowerShopDB.updateFlowersStockDB();
 
         //From Json file
-        System.out.println("====================From Json file=======================");
+        logger.warning("====================From Json file=======================");
         FlowerShop flowerShopJson = new FlowerShop();
         size = flowerShopJson.chooseBouquetType();
-        flowerShopJson.validateOrderType("Json" , size);
+        flowerShopJson.validateOrderType("Json", size);
         flowerShopJson.calculateBouquetCost();
         flowerShopJson.updateFlowersStockJson();
     }

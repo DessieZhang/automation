@@ -1,0 +1,17 @@
+[
+  {
+    "type": "tiny",
+    "basePrice": 10,
+    "maxAmount": 10
+  },
+  {
+    "type": "medium",
+    "basePrice": 15,
+    "maxAmount": 20
+  },
+  {
+    "type": "big",
+    "basePrice": 20,
+    "maxAmount": 30
+  }
+]

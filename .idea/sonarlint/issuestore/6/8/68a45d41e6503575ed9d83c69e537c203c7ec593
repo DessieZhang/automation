@@ -1,0 +1,14 @@
+
+]
+java:S1126"AReplace this if-then-else statement by a single return statement.(’ç‹s8Ä·Åáä/
+^
+java:S1126"AReplace this if-then-else statement by a single return statement.(¿àâÈ8ã·Åáä/
+ƒ
+java:S2178"fCorrect this "&" to "&&" and extract the right operand to a variable if it should always be evaluated.(¿àâÈ8å·Åáä/
+^
+java:S1126!"AReplace this if-then-else statement by a single return statement.(»€ğ8ç·Åáä/
+]
+java:S1126%"AReplace this if-then-else statement by a single return statement.(ÇÃó8é·Åáä/
+Z	java:S106B"9Replace this use of System.out or System.err by a logger.(ÊìÕĞúÿÿÿÿ8ñ·Åáä/
+c
+java:S1192"GDefine a constant instead of duplicating this literal "medium" 3 times.(’ç‹s8ó·Åáä/

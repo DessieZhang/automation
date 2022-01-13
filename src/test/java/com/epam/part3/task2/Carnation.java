@@ -1,7 +1,7 @@
 package com.epam.part3.task2;
 
 public class Carnation extends Flower {
-    public Carnation(){
+    public Carnation() {
         super();
     }
 
@@ -11,7 +11,7 @@ public class Carnation extends Flower {
     }
 
     @Override
-    public int checkInStock(int amount){
+    public int checkInStock(int amount) {
         int actualBought = 0;
         if (super.getAmount() == 0) {
             System.out.println("Carnations are out of stock!");
@@ -23,4 +23,4 @@ public class Carnation extends Flower {
         }
         return actualBought;
     }
-    }
+}
