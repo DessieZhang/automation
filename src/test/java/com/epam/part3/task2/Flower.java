@@ -42,16 +42,17 @@ public class Flower {
         this.amount = amount;
     }
 
-    public int checkInStock(int amount) {
+    public int checkInStock(int orderAmount) {
         int actualBought = 0;
         if (this.getAmount() == 0) {
             System.out.println("Roses are out of stock!");
-        } else if (amount <= this.getAmount()) {
-            actualBought = amount;
-        } else if (amount > this.getAmount()) {
-            actualBought = amount;
+        } else if (orderAmount <= this.getAmount()) {
+            actualBought = orderAmount;
+        } else if (orderAmount > this.getAmount()) {
+            actualBought = this.getAmount();
             System.out.println("There are only " + this.getAmount() + " roses in stock.");
         }
         return actualBought;
     }
 }
+

@@ -54,17 +54,17 @@ public class Flower {
         this.amount = amount;
     }
 
-    public int checkInStock(int amount) {
+    public int checkInStock(int orderAmount) {
         int actualBought = 0;
         try{
         if (this.getAmount() < 0) {
             throw new InsufficientAmountException();
         } else if (this.getAmount() == 0) {
                 System.out.println("Roses are out of stock!");
-        } else if (this.getAmount() > 0 & amount <= this.getAmount()) {
-            actualBought = amount;
-        } else if (this.getAmount() > 0 & amount > this.getAmount()) {
-            actualBought = amount;
+        } else if (this.getAmount() > 0 & orderAmount <= this.getAmount()) {
+            actualBought = orderAmount;
+        } else if (this.getAmount() > 0 & orderAmount > this.getAmount()) {
+            actualBought = this.getAmount();
             System.out.println("There are only " + this.getAmount() + " roses in stock.");
             //----------Custom Exception 3--------------
         }}catch (InsufficientAmountException e){

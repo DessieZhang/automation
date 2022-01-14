@@ -9,6 +9,10 @@ public class HashSetVsTreeSet {
     private static double hashSetTime, treeSetTime;
     private static HashSet<Integer> hashSet = new HashSet<Integer>();
     private static TreeSet<Integer> treeSet = new TreeSet<Integer>();
+
+    /**
+     * Enter a number to start the compare
+     */
     public static void start() {
         System.out.print("Please enter a number(It is recommended bigger than 10000): ");
         Scanner scan = new Scanner(System.in);
@@ -20,6 +24,10 @@ public class HashSetVsTreeSet {
         }
     }
 
+    /**
+     * Performance monitor for HashSet
+     * @param method add,search,delete
+     */
     public static void hashSetTest(String method){
         double start = System.currentTimeMillis() * 0.001;
 
@@ -42,6 +50,10 @@ public class HashSetVsTreeSet {
         System.out.println("HashMap takes " + df.format(hashSetTime)  + "s to " + method +" "  + numbers + " elements");
     }
 
+    /**
+     * Performance monitor for TreeSet
+     * @param method add,search,delete
+     */
     public static void treeSetTest(String method) {
         double start = System.currentTimeMillis() * 0.001;
 
@@ -64,6 +76,9 @@ public class HashSetVsTreeSet {
         System.out.println("TreeMap takes " + df.format(treeSetTime) + "s to " + method + " " + numbers + " elements");
     }
 
+    /**
+     * Get the performance difference of HashSet and TreeSet
+     */
     public static void difference(){
         double differenceSec = 0;
         double differenceTimes = 0;

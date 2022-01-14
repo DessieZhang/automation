@@ -14,6 +14,11 @@ public class JsonHandler {
     private static Logger logger = Logger.getLogger(JsonHandler.class.getName());
     private final String jsonFilePath = System.getProperty("user.dir") + "/src/test/resources/flowershop.json";
 
+    /**
+     * Get flowers info from Json file
+     * @return List of flowers info
+     * @throws FileNotFoundException
+     */
     public List<Flower> getFlowersData() throws FileNotFoundException {
         List<Flower> flowers = new ArrayList<>();
         Gson gson = new Gson();
@@ -32,7 +37,10 @@ public class JsonHandler {
         }
     }
 
-
+    /**
+     * Update flowers info to Json file
+     * @param flowers current in-stock flowers
+     */
     public void updateFlowersData(List<Flower> flowers) {
         try {
             FileWriter fileWriter = new FileWriter(jsonFilePath);

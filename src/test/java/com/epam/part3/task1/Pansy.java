@@ -11,14 +11,14 @@ public class Pansy extends Flower {
     }
 
     @Override
-    public int checkInStock(int amount) {
+    public int checkInStock(int orderAmount) {
         int actualBought = 0;
         if (super.getAmount() == 0) {
             System.out.println("Pansies are out of stock!");
-        } else if (amount <= super.getAmount()) {
-            actualBought = amount;
-        } else if (amount > super.getAmount()) {
-            actualBought = amount;
+        } else if (orderAmount <= super.getAmount()) {
+            actualBought = orderAmount;
+        } else if (orderAmount > super.getAmount()) {
+            actualBought = super.getAmount();
             System.out.println("There are only " + super.getAmount() + " pansies in stock.");
         }
         return actualBought;

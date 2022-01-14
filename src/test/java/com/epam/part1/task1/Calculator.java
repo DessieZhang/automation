@@ -1,8 +1,17 @@
 package com.epam.part1.task1;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Calculator {
+    /**
+     * Provides addition, subtraction, multiplication and division operations
+     *
+     * @param operator + - * /
+     * @param num1     double num1
+     * @param num2     double num2
+     * @return result
+     */
     public static double operator(char operator, double num1, double num2) {
         double result = 0;
         switch (operator) {
@@ -40,9 +49,7 @@ public class Calculator {
         char operator;
         double number1;
         double number2;
-        double result;
 
-        // create an object of Scanner class
         Scanner input = new Scanner(System.in);
 
         // ask user to enter operator
@@ -56,6 +63,7 @@ public class Calculator {
         System.out.println("Enter the second number");
         number2 = input.nextDouble();
 
-        result = operator(operator, number1, number2);
+        //calculate the result
+        operator(operator, number1, number2);
     }
 }

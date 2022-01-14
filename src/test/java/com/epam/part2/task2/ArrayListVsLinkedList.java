@@ -12,6 +12,10 @@ public class ArrayListVsLinkedList {
     private static double arrayListTime, linkedListTime;
     private static ArrayList<Integer> arrayList = new ArrayList<Integer>();
     private static LinkedList<Integer> linkedList = new LinkedList<Integer>();
+
+    /**
+     *Enter a number to start the compare
+     */
     public static void start() {
         System.out.print("Please enter a number(It is recommended bigger than 10000): ");
         Scanner scan = new Scanner(System.in);
@@ -23,6 +27,10 @@ public class ArrayListVsLinkedList {
         }
     }
 
+    /**
+     * Performance monitor for LinkedList
+     * @param method add,search,delete
+     */
     public static void linkedListTest(String method){
         double start = System.currentTimeMillis() * 0.001;
 
@@ -45,6 +53,10 @@ public class ArrayListVsLinkedList {
         System.out.println("LinkedList takes " + df.format(linkedListTime)  + "s to " + method +" "  + numbers + " elements");
     }
 
+    /**
+     * Performance monitor for LinkedList
+     * @param method add,search,delete
+     */
     public static void arrayListTest(String method) {
         double start = System.currentTimeMillis() * 0.001;
 
@@ -67,6 +79,9 @@ public class ArrayListVsLinkedList {
         System.out.println("ArrayList takes " + df.format(arrayListTime) + "s to " + method + " " + numbers + " elements");
     }
 
+    /**
+     * Get the performance difference of ArrayList and LinkedList
+     */
     public static void difference(){
         double differenceSec = 0;
         double differenceTimes = 0;

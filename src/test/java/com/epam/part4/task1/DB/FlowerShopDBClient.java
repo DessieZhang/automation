@@ -28,6 +28,11 @@ public class FlowerShopDBClient extends PostgreSqlDbClient {
         }
     }
 
+    /**
+     * Get flowers info from DB
+     * @return List of flowers info
+     * @throws DatabaseException
+     */
     public List<Flower> getFlowers() throws DatabaseException {
         String sql = "select * from public.flowers";
         try {
@@ -68,7 +73,12 @@ public class FlowerShopDBClient extends PostgreSqlDbClient {
         }
     }
 
-
+    /**
+     * Update flower info
+     * @param flowers current flowers
+     * @return updated rows number
+     * @throws DatabaseException
+     */
     public int updateFlowersTable(List<Flower> flowers) throws DatabaseException {
         int rows = 0;
         String sql = "";

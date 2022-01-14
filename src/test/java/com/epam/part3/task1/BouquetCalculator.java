@@ -6,8 +6,12 @@ import com.epam.GlobalVar;
 
 public class BouquetCalculator implements Bouquet {
 
-    //Get the sum of order flowers
-    public static int flowersSum(int[] flowers) {
+    /**
+     * Get the sum of order flowers
+     * @param flowers
+     * @return the sum amount of ordered flowers
+     */
+    private static int flowersSum(int[] flowers) {
         int sum = 0;
         for (int i : flowers) {
             sum += i;
@@ -15,7 +19,11 @@ public class BouquetCalculator implements Bouquet {
         return sum;
     }
 
-    //Check if the order bouquet is valid
+    /**
+     * Check if the order bouquet is valid
+     * @param type
+     * @return true for valid,false for invalid
+     */
     public boolean validateBouquetType(String type) {
         if ((type.equalsIgnoreCase("tiny")) || (type.equalsIgnoreCase("medium")) || (type.equalsIgnoreCase("big")))
             return true;
@@ -23,7 +31,12 @@ public class BouquetCalculator implements Bouquet {
             return false;
     }
 
-    // Validate if the number of flowers chosen match the bouquet size requested
+    /**
+     * Validate if the number of flowers chosen match the bouquet size requested
+     * @param type
+     * @param flowers
+     * @return true for match, false for mismatch
+     */
     public boolean validateBouquet(String type, int[] flowers) {
         if (type.equalsIgnoreCase("tiny")) {
             if (flowersSum(flowers) > 0 & flowersSum(flowers) <= GlobalVar.MaxTiny)
@@ -40,7 +53,13 @@ public class BouquetCalculator implements Bouquet {
         } else return false;
     }
 
-    //Calculate the BouquetCost according to Bouquet type
+    /**
+     * Calculate the Bouquet Cost according to the selected Bouquet type
+     * @param bouquetType
+     * @param flowers
+     * @param orderAmount
+     * @return Bouquet cost
+     */
     public double calculateBouquetCost(String bouquetType, List<Flower> flowers, int[] orderAmount) {
         double cost = 0;
         double flowerCost = 0;
