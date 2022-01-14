@@ -1,56 +1,39 @@
 package com.epam.part1.task1;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Calculator {
+    interface MathOperation {
+        double operation(double a, double b);
+    }
+
+    MathOperation addition = (double a, double b) -> a + b;
+
+    MathOperation subtraction = (double a, double b) -> a - b;
+
+    MathOperation multiplication = (double a, double b) -> a * b;
+
+    MathOperation division = (a, b) -> a / b;
+
     /**
      * Provides addition, subtraction, multiplication and division operations
      *
-     * @param operator + - * /
-     * @param num1     double num1
-     * @param num2     double num2
+     * @param a             number1
+     * @param b             number2
+     * @param mathOperation addition, subtraction, multiplication or division
      * @return result
      */
-    public static double operator(char operator, double num1, double num2) {
-        double result = 0;
-        switch (operator) {
-            // performs addition between numbers
-            case '+':
-                result = num1 + num2;
-                System.out.println(num1 + " + " + num2 + " = " + result);
-                break;
-
-            // performs subtraction between numbers
-            case '-':
-                result = num1 - num2;
-                System.out.println(num1 + " - " + num2 + " = " + result);
-                break;
-
-            // performs multiplication between numbers
-            case '*':
-                result = num1 * num2;
-                System.out.println(num1 + " * " + num2 + " = " + result);
-                break;
-
-            // performs division between numbers
-            case '/':
-                result = num1 / num2;
-                System.out.println(num1 + " / " + num2 + " = " + result);
-                break;
-
-            default:
-                System.out.println("Invalid operator!");
-        }
-        return result;
+    private double operate(double a, double b, MathOperation mathOperation) {
+        return mathOperation.operation(a, b);
     }
 
     public static void main(String[] args) {
         char operator;
         double number1;
         double number2;
-
+        double result;
         Scanner input = new Scanner(System.in);
+        Calculator c = new Calculator();
 
         // ask user to enter operator
         System.out.println("Please choose an operator: +, -, *, or /");
@@ -62,8 +45,36 @@ public class Calculator {
 
         System.out.println("Enter the second number");
         number2 = input.nextDouble();
+        switch (operator) {
+            // performs addition between numbers
+            case '+':
+                result = c.operate(number1, number2, c.addition);
+                System.out.println(number1 + " + " + number2 + " = " + result);
+                break;
 
-        //calculate the result
-        operator(operator, number1, number2);
+            // performs subtraction between numbers
+            case '-':
+                result = c.operate(number1, number2, c.division);
+                System.out.println(number1 + " - " + number2 + " = " + result);
+                break;
+
+            // performs multiplication between numbers
+            case '*':
+                result = c.operate(number1, number2, c.multiplication);
+                System.out.println(number1 + " * " + number2 + " = " + result);
+                break;
+
+            // performs division between numbers
+            case '/':
+                while ((int) number2 == 0) {
+                    System.out.println("The divisor cannot be 0! Please re-enter a valid number:");
+                    number2 = input.nextDouble();
+                }
+                result = c.operate(number1, number2, c.division);
+                System.out.println(number1 + " / " + number2 + " = " + result);
+                break;
+            default:
+                System.out.println("Invalid operator!");
+        }
     }
 }

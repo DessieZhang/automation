@@ -38,6 +38,16 @@ public class JsonHandler {
     }
 
     /**
+     * Get flowers info from Json file
+     * @return List of flowers info
+     * @throws FileNotFoundException
+     */
+    public Object getFlowersByType(String type) throws FileNotFoundException {
+        Object flower = getFlowersData().stream().filter(u -> (u.getType().contains(type))).findFirst().get();
+        return flower;
+    }
+
+    /**
      * Update flowers info to Json file
      * @param flowers current in-stock flowers
      */

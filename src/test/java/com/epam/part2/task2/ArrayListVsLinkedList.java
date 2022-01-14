@@ -10,8 +10,8 @@ public class ArrayListVsLinkedList {
     private static int numbers = 0;
     private static DecimalFormat df = new DecimalFormat("#.#####");
     private static double arrayListTime, linkedListTime;
-    private static ArrayList<Integer> arrayList = new ArrayList<Integer>();
-    private static LinkedList<Integer> linkedList = new LinkedList<Integer>();
+    private static ArrayList<Integer> arrayList = new ArrayList<>();
+    private static LinkedList<Integer> linkedList = new LinkedList<>();
 
     /**
      *Enter a number to start the compare

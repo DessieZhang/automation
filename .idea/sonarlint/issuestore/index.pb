@@ -26,8 +26,6 @@ _
 i
 9src/test/java/com/epam/part4/task1/BouquetCalculator.java,2\0\2075aa3e14fc0a46dfdf82130d50755d9c859096
 i
-9src/test/java/com/epam/part3/task2/BouquetCalculator.java,8\7\872d6605e0ce53e217e74cbaa3055fa1bb79fbdd
-i
 9src/test/java/com/epam/part3/task1/BouquetCalculator.java,6\8\68a45d41e6503575ed9d83c69e537c203c7ec593
 i
 9src/test/java/com/epam/part2/task1/BouquetCalculator.java,9\d\9d55a4e207f32158f2117994373c134b956c4ba1
